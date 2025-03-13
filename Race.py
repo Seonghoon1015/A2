@@ -4,21 +4,21 @@ from graphics import Point # Import the Point class from graphics
 
 class Horse:
     def __init__(self, speed, y, image, window):
-        self.x = 0 # Initialize the x-position to 0 which is starting line
+        self.x_pos = 0 # Initialize the x-position to 0 which is starting line
         self.speed = speed # Store the speed which is number of dice sides
-        self.y = y # Store the y-position which represents lane position
+        self.y_pos = y # Store the y-position which represents lane position
         self.image = image # Store the image object for the horse
         self.window = window # Store the graphics window for drawing
         self.dice = Dice.Dice(speed) # Create a dice object with 'speed' sides
 
     def move(self):
-        self.x += self.dice.roll() # Move the horse by rolling the dice and adding the result to x
+        self.x_pos += self.dice.roll() # Move the horse by rolling the dice and adding the result to x
 
     def draw(self):
-        self.image.draw_at_pos(self.window, self.x, self.y) # Draw the horse at the current x and y positions
+        self.image.draw_at_pos(self.window, self.x_pos, self.y_pos) # Draw the horse at the current x and y positions
 
     def crossed_finish_line(self, x):
-        return self.x >= x # Check if the horse's x-position has reached or crossed the finish line
+        return self.x_pos >= x # Check if the horse's x-position has reached or crossed the finish line
 
 def main():
     win = graphics.GraphWin("Horse", 700, 350, autoflush=False) # Create the graphics window with a specific size
